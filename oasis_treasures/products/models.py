@@ -1,8 +1,25 @@
 from django.db import models
 
-#
+
 class Product(models.Model):
-    pass
+    flower = models.ForeignKey("Flower", on_delete=models.CASCADE)
+    views_count = models.PositiveIntegerField(default=0)
+    description = models.TextField(max_length=2000)
+    code = models.PositiveSmallIntegerField(default=0)
+    price = models.FloatField(default=0)
+
+    def __str__(self) -> str:
+        return f"Product ({self.flower})"
+
+
+class Basket(models.Model):
+    flower = models.ForeignKey("Flower", on_delete=models.CASCADE)
+    entourage = models.ForeignKey("Entourage", on_delete=models.CASCADE)
+    package = models.ForeignKey("Package", on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"Basket {self.pk}"
+
 
 
 class Flower(models.Model):

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Branches(models.Model):
+class Branch(models.Model):
     name = models.CharField(max_length=32)
     map_longtitude = models.CharField(max_length=32)
     map_latitude = models.CharField(max_length=32)
